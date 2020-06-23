@@ -2,31 +2,32 @@
 
 JetBrains TeamCity Server, image is based on the Alpine base image with 0 vulnerabilities.
 
-## Current Docker image (~1.61GB)
+## Current Docker image (~1.62GB)
 
 Security scanning using Clair
 ```
-clair-scanner secureimages/teamcity-server:2020.1-alpine-3.12.0
-2020/06/11 11:30:52 [INFO] ▶ Start clair-scanner
-2020/06/11 11:31:41 [INFO] ▶ Server listening on port 9279
-2020/06/11 11:31:41 [INFO] ▶ Analyzing 76de98d374759ed05698adec9aa042db7bc0f62c25fb612c0f9be1419a581421
-2020/06/11 11:31:41 [INFO] ▶ Analyzing c38f2df7f0f88fcba310a548e4a034d2e0870f23237fefb3631d8e085024969a
-2020/06/11 11:31:41 [INFO] ▶ Analyzing 2fb186c81a562cd690370963fc1171b567fd73b455940b1346c17efc3a7c2658
-2020/06/11 11:31:42 [INFO] ▶ Analyzing c7617e87ae00b0309525ebde048284af4b2361b4435fbcc4ce4e2b63bc6e2543
-2020/06/11 11:31:42 [INFO] ▶ Analyzing 68051b71d5af7628bf75b188ec6f93f1efd3d937c51e90d37ad5457b28b2b311
-2020/06/11 11:31:43 [INFO] ▶ Image [secureimages/teamcity-server:2020.1-alpine-3.12.0] contains NO unapproved vulnerabilities
+clair-scanner secureimages/teamcity-server:2020.1.1-alpine-3.12.0
+2020/06/23 16:00:18 [INFO] ▶ Start clair-scanner
+2020/06/23 16:01:02 [INFO] ▶ Server listening on port 9279
+2020/06/23 16:01:02 [INFO] ▶ Analyzing 76de98d374759ed05698adec9aa042db7bc0f62c25fb612c0f9be1419a581421
+2020/06/23 16:01:02 [INFO] ▶ Analyzing d07ccba4bee4b373cd73cf7846ad3dd2b415f6c2feb8c8c0a786cdf438303f4d
+2020/06/23 16:01:02 [INFO] ▶ Analyzing a88fd360892da600a74effa4fa28a542fdb7330349ddb5bf0f883f9340e2a3c2
+2020/06/23 16:01:03 [INFO] ▶ Analyzing d2f586d77eeaecb3a0c9ff2494c5f0317218b2568a965ff68bc6fc791498e5d7
+2020/06/23 16:01:03 [INFO] ▶ Analyzing dcd50fbdbeb41c6f149926ce618176f57e632c9941a9eea47b2cd939739b3397
+2020/06/23 16:01:03 [INFO] ▶ Image [secureimages/teamcity-server:2020.1.1-alpine-3.12.0] contains NO unapproved vulnerabilities
 ```
 
 Security scanning using Trivy
 ```
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:ro aquasec/trivy:0.9.1 --no-progress secureimages/teamcity-server:2020.1-alpine-3.12.0
-2020-06-11T08:32:03.258Z        INFO    Need to update DB
-2020-06-11T08:32:03.258Z        INFO    Downloading DB...
-2020-06-11T08:32:55.235Z        INFO    Detecting Alpine vulnerabilities...
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:ro aquasec/trivy:0.9.1 --no-progress secureimages/teamcity-server:2020.1.1-alpine-3.12.0
+2020-06-23T13:04:40.666Z        INFO    Need to update DB
+2020-06-23T13:04:40.667Z        INFO    Downloading DB...
+2020-06-23T13:05:29.279Z        INFO    Detecting Alpine vulnerabilities...
 
-secureimages/teamcity-server:2020.1-alpine-3.12.0 (alpine 3.12.0)
-=================================================================
+secureimages/teamcity-server:2020.1.1-alpine-3.12.0 (alpine 3.12.0)
+===================================================================
 Total: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
+
 
 ```
 
@@ -34,40 +35,40 @@ Total: 0 (UNKNOWN: 0, LOW: 0, MEDIUM: 0, HIGH: 0, CRITICAL: 0)
 
 [https://hub.docker.com/r/jetbrains/teamcity-server](https://hub.docker.com/r/jetbrains/teamcity-server)
 ```
-docker pull jetbrains/teamcity-server:2020.1
+docker pull jetbrains/teamcity-server:2020.1.1
 ```
 
 Security scanning using Clair
 ```
-clair-scanner jetbrains/teamcity-server:2020.1
-2020/06/11 11:33:07 [INFO] ▶ Start clair-scanner
-2020/06/11 11:34:00 [INFO] ▶ Server listening on port 9279
-2020/06/11 11:34:00 [INFO] ▶ Analyzing 6ef5a7b6cc6da3fe4489191c166763832ff732b6c346e7d77a2dbbd3e89a9f08
-2020/06/11 11:34:00 [INFO] ▶ Analyzing c774328901d4a9ee5201de46d502b8f56f9b6a5d21c64affa6ca96d3b69cfe68
-2020/06/11 11:34:00 [INFO] ▶ Analyzing 67b382b86062872cc280027bfb3cc103cba4e52bb66d23c590e0cb8647dd39fe
-2020/06/11 11:34:00 [INFO] ▶ Analyzing 4e0bca968c343d4488ae5b156e0b4a6630a6964bd401264b3fe9060a266f4ce7
-2020/06/11 11:34:00 [INFO] ▶ Analyzing c49028ca3032013fb4b222de627272dbeb7ecdff6828d2561eb792de93f9664d
-2020/06/11 11:34:00 [INFO] ▶ Analyzing 7ee42302da535b597ec54125d24d4ca7370ddd4bb5bcd86a00ed44f12c5df79f
-2020/06/11 11:34:00 [INFO] ▶ Analyzing 8c15572d795e8d4a5d7e5a2cb9cf4effcdc7bc81a957b8584a43f138b479c6b4
-2020/06/11 11:34:00 [INFO] ▶ Analyzing b43b28e658db8b53f7739979e61d28c452c6b44305a1dac87e949a6c4fadb008
-2020/06/11 11:34:00 [INFO] ▶ Analyzing 2428853f3146000d21f22f7efeb35e8f182f56628a6cf4596d2d2108745c5a4d
-2020/06/11 11:34:00 [INFO] ▶ Analyzing 2267acc748da51b97dc0db369bf5c91685b55ce2b1b853a1b3f3455047620b15
-2020/06/11 11:34:00 [INFO] ▶ Analyzing dc76a0b01ad4674a43c430c9f06ded74ec0a7dd9d9c3c44e6c069d2a5ded19f8
-2020/06/11 11:34:00 [INFO] ▶ Analyzing e957825e47349e82192483a2b0f2641fd504a7950246bc0def9a03dea6e3f253
-2020/06/11 11:34:00 [INFO] ▶ Analyzing 13118d40adcc90aed3d070663db8a9d1610a68807e50b532895f38636f273e77
-2020/06/11 11:34:01 [INFO] ▶ Analyzing fc3232e2cec2cf746e6b0901f5e0ee784b8d46dc91fc51faac8b75edeccac4ae
-2020/06/11 11:34:01 [WARN] ▶ Image [jetbrains/teamcity-server:2020.1] contains 64 total vulnerabilities
-2020/06/11 11:34:01 [ERRO] ▶ Image [jetbrains/teamcity-server:2020.1] contains 64 unapproved vulnerabilities
+clair-scanner jetbrains/teamcity-server:2020.1.1
+2020/06/23 16:05:44 [INFO] ▶ Start clair-scanner
+2020/06/23 16:06:31 [INFO] ▶ Server listening on port 9279
+2020/06/23 16:06:31 [INFO] ▶ Analyzing 4046a0366bf3d63d6ebb165835dd7cd4a72c49d65942a66efb1b4a44bf5803b2
+2020/06/23 16:06:31 [INFO] ▶ Analyzing cb6f8e1a8e2c47f2e7eda433f9afb3ce6debe0131ba556f6ab516f1092b589be
+2020/06/23 16:06:31 [INFO] ▶ Analyzing f81f5853c77138f4f3bef3fe7a639070314c8b38f66f03f57055b5d9055c5c7a
+2020/06/23 16:06:31 [INFO] ▶ Analyzing 5171a8ddd9ca89e576ef04f932cfff352168ff2e06f856cc05d09b998989c8c5
+2020/06/23 16:06:31 [INFO] ▶ Analyzing d7020ea86a8e49d3df5c284ed7d190a6ad7f31c4966516c1460523a2970a6347
+2020/06/23 16:06:31 [INFO] ▶ Analyzing 941f2016905f6367193df6d6106e3f12e4b3e10d081fc936299a8eaa9177dffe
+2020/06/23 16:06:31 [INFO] ▶ Analyzing aa22b2f787d7085fcc0095baabaea496b14bc0ce7b905dc7d0deb255b8e44d3c
+2020/06/23 16:06:31 [INFO] ▶ Analyzing 409016bb341dae9bcd5da6b9dc745a34be8726024ffe0043d72f943c673fa92c
+2020/06/23 16:06:32 [INFO] ▶ Analyzing 27d729a7020b9786cb849bc8d32fe61e974eee063b5898df864fe5675a441e7a
+2020/06/23 16:06:32 [INFO] ▶ Analyzing 70c9812ff7bae115c685b656997b04c728574e9323328cb1798cf9da05b36332
+2020/06/23 16:06:32 [INFO] ▶ Analyzing c7f5143edb1399f62b9db69c18391ba713d6b36a1f1669095481e4660d2afd90
+2020/06/23 16:06:32 [INFO] ▶ Analyzing a3060e1b02bb9953919547002104550eca7f36df1780a7da5a3b1d3fe0a38712
+2020/06/23 16:06:32 [INFO] ▶ Analyzing 0b67b494b47b57a6d52fce8d8efca1621f645aacaaba7fb72bd163af66c4ea99
+2020/06/23 16:06:33 [INFO] ▶ Analyzing 101568035c6493e74b0baa6e89a0a6f30d5cd14591483d228b73f0f84d412b94
+2020/06/23 16:06:33 [WARN] ▶ Image [jetbrains/teamcity-server:2020.1.1] contains 57 total vulnerabilities
+2020/06/23 16:06:33 [ERRO] ▶ Image [jetbrains/teamcity-server:2020.1.1] contains 57 unapproved vulnerabilities
 ```
 
 Security scanning using Trivy
 ```
-docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:ro aquasec/trivy:0.9.1 --no-progress jetbrains/teamcity-server:2020.1
-2020-06-11T08:34:17.832Z        INFO    Need to update DB
-2020-06-11T08:34:17.832Z        INFO    Downloading DB...
-2020-06-11T08:35:17.423Z        INFO    Detecting Ubuntu vulnerabilities...
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock:ro aquasec/trivy:0.9.1 --no-progress jetbrains/teamcity-server:2020.1.1
+2020-06-23T13:06:36.015Z        INFO    Need to update DB
+2020-06-23T13:06:36.015Z        INFO    Downloading DB...
+2020-06-23T13:07:31.989Z        INFO    Detecting Ubuntu vulnerabilities...
 
-jetbrains/teamcity-server:2020.1 (ubuntu 18.04)
-===============================================
-Total: 158 (UNKNOWN: 0, LOW: 112, MEDIUM: 46, HIGH: 0, CRITICAL: 0)
+jetbrains/teamcity-server:2020.1.1 (ubuntu 18.04)
+=================================================
+Total: 148 (UNKNOWN: 0, LOW: 101, MEDIUM: 47, HIGH: 0, CRITICAL: 0)
 ```
