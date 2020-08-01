@@ -1,6 +1,7 @@
 # JetBrains TeamCity Server
 
 JetBrains TeamCity Server, image is based on the Alpine base image with 0 vulnerabilities.
+forked from dockersecureimages/teamcity-server to support Openshift K8S.
 
 ## Current Docker image (~1.61GB)
 
