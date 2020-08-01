@@ -17,6 +17,8 @@ ENV JAVA_HOME=/usr/lib/jvm/java-1.8-openjdk \
     GLIBC_REPO=https://github.com/sgerrand/alpine-pkg-glibc \
     GLIBC_VERSION=2.31-r0
 
+RUN chmod g+w /etc/passwd
+ 
 RUN set -ex ;\
     apk add libstdc++ curl ca-certificates bash git mercurial ;\
     wget -q https://alpine-pkgs.sgerrand.com/sgerrand.rsa.pub -O /etc/apk/keys/sgerrand.rsa.pub ;\
@@ -44,10 +46,15 @@ RUN addgroup -S -g 1000 tcuser  ;\
 
 ADD data/ /
 
+RUN chgrp -Rf root /opt/teamcity && chmod -Rf g+w /opt/teamcity
+
 RUN chmod +x /*.sh
 
 EXPOSE 8111
 
-VOLUME [/data/teamcity_server/datadir /opt/teamcity/logs]
+VOLUME /data/teamcity_server/datadir 
+VOLUME /opt/teamcity/logs
+
+USER 1000
 
 CMD ["/run-services.sh"]
